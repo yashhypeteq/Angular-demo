@@ -1,0 +1,37 @@
+<h2 mat-dialog-title class="mb-4">Add Product</h2>
+<mat-dialog-content>
+  <form [formGroup]="productForm" class="needs-validation" novalidate>
+    <div class="mb-3">
+      <label for="inputEmail4" class="form-label">Name</label>
+      <input type="text" class="form-control" formControlName="name" id="inputEmail4" placeholder="Enter product name" required />
+      <div class="invalid-feedback">Please provide a valid name.</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="inputPrice" class="form-label">Price</label>
+      <input type="text" class="form-control" formControlName="price" id="inputPrice" placeholder="Enter product price" required />
+      <div class="invalid-feedback">Please provide a valid price.</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="inputDescription" class="form-label">Description</label>
+      <textarea type="text" class="form-control"  formControlName="description" id="inputDescription" placeholder="Enter product description" required ></textarea>
+      <div class="invalid-feedback">Please provide a valid description.</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="inputCity" class="form-label">Image</label>
+      <input type="file" class="form-control" id="inputCity" formControlName="image" (change)="onFileSelected($event)" />
+      <img *ngIf="selectedImage" [src]="selectedImage" width="120px" height="120px" alt="Image Preview" class="image-preview mt-3" />
+    </div>
+
+    <!-- <button type="submit" class="btn btn-primary">Add Product</button> -->
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="closePopup()">Cancel</button>
+  <button mat-button class="btn btn-secondary" (click)="addProduct()">Add Product</button>
+</mat-dialog-actions>
+<!-- <mat-dialog-actions>
+  <button mat-button class="btn btn-secondary">Cancel</button>
+</mat-dialog-actions> -->
