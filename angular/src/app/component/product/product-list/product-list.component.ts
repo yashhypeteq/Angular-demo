@@ -23,7 +23,7 @@ import AddEditProductComponent from '../add-edit-product/add-edit-product.compon
 export default class ProductListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  displayedColumns: string[] = ['select', 'Image', 'name', 'price', 'details', 'Action'];
+  displayedColumns: string[] = ['select', 'Image', 'name', 'price', 'description', 'Action'];
   dataSource = new MatTableDataSource<any>();
   selection = new SelectionModel<any>(true, []);
   productListData: [] = [];
@@ -68,10 +68,10 @@ export default class ProductListComponent implements OnInit {
       data: this.productData ? { ...this.productData } : null
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result === 'refresh') {
-        this.getProduct();
-      }
+    dialogRef.afterClosed().subscribe((result) => {   
+      console.log("result",result);
+         
+        this.getProduct();      
     });
   }
 

@@ -31,7 +31,7 @@ export class ProductService {
   }
 
   updateProduct(pid: any, body: any) {
-    return this.http.post<any>(`${this.url}/product/` + pid, body);
+    return this.http.put<any>(`${this.url}/product/` + pid, body);
   }
 
   deleteProduct(pid: any) {

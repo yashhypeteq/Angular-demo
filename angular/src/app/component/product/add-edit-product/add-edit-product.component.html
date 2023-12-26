@@ -18,10 +18,10 @@
       <textarea type="text" class="form-control"  formControlName="description" id="inputDescription" placeholder="Enter product description" required ></textarea>
       <div class="invalid-feedback">Please provide a valid description.</div>
     </div>
-
+ 
     <div class="mb-3">
       <label for="inputCity" class="form-label">Image</label>
-      <input type="file" class="form-control" id="inputCity" formControlName="image" (change)="onFileSelected($event)" />
+      <input type="file" id="fileInput" #fileInput (change)="onFileSelected($event)"class="form-control"  formControlName="image" />
       <img *ngIf="selectedImage" [src]="selectedImage" width="120px" height="120px" alt="Image Preview" class="image-preview mt-3" />
     </div>
 
@@ -30,8 +30,7 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="closePopup()">Cancel</button>
-  <button mat-button class="btn btn-secondary" (click)="addProduct()">Add Product</button>
+  <button mat-button class="btn btn-secondary" (click)="addProduct()" *ngIf="data=='' || data==null">Add</button>
+  <button mat-button class="btn btn-secondary" (click)="updateProduct()" *ngIf="data">Update </button>
 </mat-dialog-actions>
-<!-- <mat-dialog-actions>
-  <button mat-button class="btn btn-secondary">Cancel</button>
-</mat-dialog-actions> -->
+
